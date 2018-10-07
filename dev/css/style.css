@@ -30,14 +30,10 @@ h1 {
   position: absolute;
   overflow-x: hidden;
   overflow-y: scroll;
-  -webkit-transform: rotate(270deg) translateX(-100%);
   transform: rotate(270deg) translateX(-100%);
-  -webkit-transform-origin: top left;
   transform-origin: top left; }
   #root .horizontal-wrapper-content {
-    -webkit-transform: rotate(90deg) translateY(-100vh);
     transform: rotate(90deg) translateY(-100vh);
-    -webkit-transform-origin: top left;
     transform-origin: top left;
     white-space: nowrap;
     font-size: 0; }
