@@ -1,7 +1,8 @@
 'use strict';
 
 var gulp = require('gulp'),
-	 sass = require('gulp-sass');
+	 sass = require('gulp-sass'),
+	 htmlmin = require('gulp-htmlmin');
 
 gulp.task('sass', function () {
 	return gulp.src('./dev/sass/**/*.scss')
@@ -10,7 +11,14 @@ gulp.task('sass', function () {
 				.pipe(gulp.dest('./build/css'));
 });
 
-gulp.task('sass:watch', function () {
-	gulp.watch('./dev/sass/**/*.scss', ['sass']);
+gulp.task('minify', () => {
+	return gulp.src('dev/*.html')
+				.pipe(htmlmin({collapseWhitespace: true}))
+				.pipe(gulp.dest('build'));
 });
-gulp.task('default', ['sass', 'sass:watch']);
+
+gulp.task('watch', function () {
+	gulp.watch('./dev/sass/**/*.scss', ['sass']);
+	gulp.watch('./dev/*.html', ['minify']);
+});
+gulp.task('default', ['sass', 'minify', 'watch']);
